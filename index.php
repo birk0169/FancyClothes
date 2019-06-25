@@ -1,4 +1,7 @@
-    <?php require "header.php";?>
+    <?php
+    //Load header
+        require "header.php";
+    ?>
     <div class="container">
         <ul class="slider" id="slider">
             <li><img src="img/slide1.jpg" alt=""></li>
@@ -9,14 +12,18 @@
     <hr class="hide400">
     <h1 class="tagline">FancyClothes.DK - tøj, kvalitet, simpelt!</h1>
     <hr>
+    <?php
+        //start if
+        if(isset($_SESSION['username']) && !empty($_SESSION['username'])){
+    ?>
 
     <div class="createArticle container">
 
         <h3 class="center errorMsg">Opret ny vare:</h3>
-        <form action="includes/insertArticle.php" method="post">
+        <form action="assets/insertArticle.php" method="post" enctype="multipart/form-data">
             <div>
                 <label for="imgSrc">Billede</label>
-                <input type="text" id="imgSrc" name="imgSrc" placeholder="Vælg billede" required>
+                <input type="file" id="imgSrc" name="imgSrc" placeholder="Vælg billede" required>
             </div>
             <div>
                 <label for="imgAlt">Alt tekst</label>
@@ -57,6 +64,12 @@
         </form>
 
     </div>
+
+    <?php
+        //End if
+        }
+    ?>
+
     </div>
     <main class="container">
         <aside>
@@ -153,4 +166,5 @@
         </div>
     </main>
     <?php
+    //Load footer
     require "footer.php";
