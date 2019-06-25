@@ -2,12 +2,15 @@
     //Connect to database
     require "connect.php";
 
-    //Pull data from products table
+    $category = $_GET['category'];
+
+    //Pull data from products table, but only the products with the set category
     $statement = $dbh->prepare("SELECT products.*, users.userName FROM products 
-    JOIN users ON products.authorId = users.userId ORDER BY productId ASC");
+    JOIN users ON products.authorId = users.userId WHERE products.productCategory = ? ORDER BY productId ASC");
+    $statement->bindParam(1, $category);
     $statement->execute();
 
-    //print_r($row = $statement->fetch(PDO::FETCH_ASSOC));
+    print_r($row = $statement->fetch(PDO::FETCH_ASSOC));
 
     //While there is rows remaining in $statement the loop continues
     while($row = $statement->fetch(PDO::FETCH_ASSOC)){

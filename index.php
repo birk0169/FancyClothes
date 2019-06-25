@@ -82,7 +82,7 @@
                 </div>
                 <div class="catMain">
                     <ul>
-                        <li><a href="#">Jakker</a></li>
+                        <li><a href="assets/getArticlesCat.php?category=jakker">Jakker</a></li>
                         <li><a href="#">Bukser</a></li>
                         <li><a href="#">Skjorter</a></li>
                         <li><a href="#">Strik</a></li>
