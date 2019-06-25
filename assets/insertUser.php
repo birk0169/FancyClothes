@@ -33,11 +33,12 @@
         //Prepare statement
         $statement = $dbh->prepare("INSERT INTO users(userName, userPassword) VALUES(?, ?)");
 
-        //For later updates add password hash function
+        //Hash password
+        $hashedPassword = password_hash($formPassword1, PASSWORD_DEFAULT);
 
         //Bind parameters
         $statement->bindParam(1, $fromUsername);
-        $statement->bindParam(2, $formPassword1);
+        $statement->bindParam(2, $hashedPassword);
 
         $statement->execute();
 

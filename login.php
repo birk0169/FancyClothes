@@ -16,11 +16,12 @@
     $formPassword = $_POST['formPassword'];
 
     //Get user with mysql code
-    $statement = $dbh->prepare("SELECT *FROM users WHERE userName = ? AND userPassword = ?");
+    //$statement = $dbh->prepare("SELECT *FROM users WHERE userName = ? AND userPassword = ?");
+    $statement = $dbh->prepare("SELECT *FROM users WHERE userName = ?");
 
     //Bind parameters
     $statement->bindParam(1, $formUsername);
-    $statement->bindParam(2, $formPassword);
+    //$statement->bindParam(2, $formPassword);
 
     //Execute statement
     $statement->execute();
@@ -32,11 +33,14 @@
         header('Refresh:5; url=index.php', true, 303);
     } else{
         //Start session
-        // if()
-        $_SESSION['username'] = $row['userName'];
-        $_SESSION['accessLevel'] = $row['accessLevel'];
-        $_SESSION['id'] = $row['userId'];
-        header('location: index.php');
+        if(password_verify($formPassword, $row['userPassword'])){
+            $_SESSION['username'] = $row['userName'];
+            $_SESSION['accessLevel'] = $row['accessLevel'];
+            $_SESSION['id'] = $row['userId'];
+            header('location: index.php');
+        }
+        echo '<p class="errorMsg">Incorrect username or/and password!</p>';
+        header('Refresh:5; url=index.php', true, 303);
     }
 
 
