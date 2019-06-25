@@ -1,3 +1,7 @@
+<?php
+    //Start session
+    session_start();
+?>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -41,7 +45,13 @@
     <div class="container home">
         <a href="index.php"><img src="img/homeIcon.png" alt="Forside ikon"></a>
         <!-- Velkomstbesked -->
-        <h2></h2>
+        <h2>
+            <?php
+            if(isset($_SESSION['username']) && !empty($_SESSION['username'])){
+                echo $_SESSION['username'];
+            }
+            ?>
+        </h2>
     </div>
     <hr>
     <div class="container navbar">
@@ -52,8 +62,16 @@
                 <li><a href="#">Nyheder</a></li>
                 <li><a href="#">Handelsbetingelser</a></li>
                 <li><a href="#">Om os</a></li>
-                <li><a href='#' class='loginBtn'>Log ind</a></li>
-                <li><a href='register.php' class='loginBtn'>Opret bruger</a></li>
+                <?php
+                    if(isset($_SESSION['username']) && !empty($_SESSION['username'])){
+                        echo "<li><a href='logout.php' class='Logout'>Log ud</a></li>";
+                    }
+                    else{
+                        echo "<li><a href='#' class='loginBtn'>Log ind</a></li>";
+                        echo "<li><a href='register.php' class='loginBtn'>Opret bruger</a></li>";
+                    }
+                
+                ?>
             </ul>
         </nav>
         <div class="basket">
@@ -65,6 +83,7 @@
             </div>
         </div>
     </div>
+    <!-- Login -->
     <div class="login container">
         <form action="login.php" method="post">
             <label for="formUsername">Bruger:</label>
