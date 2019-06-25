@@ -12,6 +12,8 @@
     <hr class="hide400">
     <h1 class="tagline">FancyClothes.DK - tøj, kvalitet, simpelt!</h1>
     <hr>
+    
+    <!--<a href="assets/getArticles.php">Articles</a>-->
     <?php
         //start if
         if(isset($_SESSION['username']) && !empty($_SESSION['username'])){
@@ -56,6 +58,7 @@
                     <option value="strik">Strik</option>
                     <option value="tshirts">T-shirts og tanktops</option>
                     <option value="tasker">Tasker</option>
+                    <option value="sko">Sko</option>
                 </select>
             </div>
             <div>
@@ -120,7 +123,7 @@
                 </div>
             </div>
             <div class="frontProducts">
-                <article>
+                <!-- <article>
                     <img src="img/produkt1.jpg" alt="Lækker læderjakke>">
                     <div class="info">
                         <h3>Lækker læderjakke</h3>
@@ -138,7 +141,7 @@
                         </div>
                         <p>Odd Molly er et svensk luksusbrand stiftet af Per Holknekt – tidligere pro skateboarder. Verdenseliten tiltrak dengang mange kvindelige fans, og de fleste af dem gjorde, hvad de kunne for at få fyrenes opmærksomhed. Alle undtagen én. Hun forblev tro mod sig selv - en unik, selvsikker og uforanderlig skønhed - hende, alle fyrene ville ha'. En Odd Molly! - som ikke er et koncept, men autentisk! – et brand, hvis kollektioner er vildt smukke og inderlige, som der altid vil være brug for - dengang, nu, såvel som i fremtiden.
                             <a href="#">Læs mere...</a></p>
-                        <!-- Mulighed for sletning herunder -->
+                        
                     </div>
                 </article>
                 <article>
@@ -159,9 +162,10 @@
                         </div>
                         <p>Odd Molly er et svensk luksusbrand stiftet af Per Holknekt – tidligere pro skateboarder. Verdenseliten tiltrak dengang mange kvindelige fans, og de fleste af dem gjorde, hvad de kunne for at få fyrenes opmærksomhed. Alle undtagen én. Hun forblev tro mod sig selv - en unik, selvsikker og uforanderlig skønhed - hende, alle fyrene ville ha'. En Odd Molly! - som ikke er et koncept, men autentisk! – et brand, hvis kollektioner er vildt smukke og inderlige, som der altid vil være brug for - dengang, nu, såvel som i fremtiden.
                             <a href="#">Læs mere...</a></p>
-                        <!-- Mulighed for sletning herunder -->
+                        
                     </div>
-                </article>
+                </article> -->
+                <?php require "assets/getArticles.php"?>
             </div>
         </div>
     </main>

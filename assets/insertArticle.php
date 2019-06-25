@@ -40,23 +40,27 @@
                 //Check if image Already exists
                 if(file_exists($target_file)){
                     $uploadOk = 0;
+                    echo "File already exists ";
                 }
 
                 //Check if file size is too big
                 if($_FILES['imgSrc']['size'] > 500000){
                     $uploadOk = 0;
+                    echo "File size is too big ";
                 }
 
                 //Check if approved file type
                 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
                 && $imageFileType != "gif" ) {
                     $uploadOk = 0;
+                    echo "File type invalid ";
                 }
 
                 //Check if Passed and move uploaded file
                 if($uploadOk != 0){
                     if(move_uploaded_file($_FILES['imgSrc']['tmp_name'],$target_file)){
                         $imgSrc = $_FILES['imgSrc']['name'];
+                        
                     }
                 }
 

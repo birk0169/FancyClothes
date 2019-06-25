@@ -331,6 +331,9 @@ main {
                 flex-direction: column;
                 position: relative;
 
+                //Added by Birk
+                flex-grow: 1;
+
                 img {
                     width: 100%;
                 }
