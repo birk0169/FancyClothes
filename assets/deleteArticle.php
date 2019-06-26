@@ -1,5 +1,8 @@
 <?php 
 
+    //Url of previous page
+    //$url = $_GET['url'];
+
     //Add function to delete image
 
     //Start session

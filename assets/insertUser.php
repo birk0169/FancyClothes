@@ -21,14 +21,17 @@
 
     if($row = $statement->fetch()){
         //Username is already in use
-        echo "<p class='errorMsg'>ERROR - A user is already using that username!</p>";
+        //echo "<p class='errorMsg'>ERROR - A user is already using that username!</p>";
+        $errMsg = "ERROR - A user is already using that username!";
         //For later updates make it so that it returns to the register page with information about what went wrong using GET
     } else if($formPassword1 != $formPassword2){
         //Password not confirmed
-        echo "<p class='errorMsg'>ERROR - Password not confirmed!</p>";
+        //echo "<p class='errorMsg'>ERROR - Password not confirmed!</p>";
+        $errMsg = "ERROR - Password not confirmed!";
     } else{
         //Passed - Create new user
-        echo "<p class='errorMsg'>ERROR - Password not confirmed!</p>";
+        //echo "<p class='errorMsg'>ERROR - Password not confirmed!</p>";
+        $errMsg = "ERROR - Password not confirmed!";
 
         //Prepare statement
         $statement = $dbh->prepare("INSERT INTO users(userName, userPassword) VALUES(?, ?)");
@@ -42,9 +45,13 @@
 
         $statement->execute();
 
-        header('location:../index.php');
-
-
     }
+
+    if(isset($errMsg)){
+        header('location:../register.php?msg=' . $errMsg);
+    } else{
+        header('location:../register.php');
+    }
+    
 
 ?>

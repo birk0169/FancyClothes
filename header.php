@@ -14,6 +14,9 @@
 <html class="no-js" lang="en">
 
 <head>
+    <!--Favicon-->
+    <link rel="shortcut icon" type="image/png" href="img/homeIcon.png"/>
+
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title><?php echo $title ?> | FancyClothes.dk</title>
@@ -66,10 +69,10 @@
         <nav>
             <ul>
                 <li class="<?php echo $title === "Forside" ? "active" : "" ?>"><a href="index.php">Forside</a></li>
-                <li class="<?php echo $title === "Produkter" ? "active" : "" ?>"><a href="#">Produkter</a></li>
-                <li class="<?php echo $title === "Nyheder" ? "active" : "" ?>"><a href="#">Nyheder</a></li>
-                <li class="<?php echo $title === "Handelsbetingelser" ? "active" : "" ?>"><a href="#">Handelsbetingelser</a></li>
-                <li class="<?php echo $title === "Om os" ? "active" : "" ?>"><a href="#">Om os</a></li>
+                <li class="<?php echo $title === "Produkter" ? "active" : "" ?>"><a href="products.php">Produkter</a></li>
+                <li class="<?php echo $title === "Nyheder" ? "active" : "" ?>"><a href="news.php">Nyheder</a></li>
+                <li class="<?php echo $title === "Handelsbetingelser" ? "active" : "" ?>"><a href="conditions.php">Handelsbetingelser</a></li>
+                <li class="<?php echo $title === "Om os" ? "active" : "" ?>"><a href="about.php">Om os</a></li>
                 <?php
                     if(isset($_SESSION['username']) && !empty($_SESSION['username'])){
                         echo "<li><a href='logout.php' class='Logout'>Log ud</a></li>";
@@ -106,3 +109,7 @@
         <a id="newUser" href="register.php">Ny bruger?</a>
     </div>
     <hr>
+    <?php
+        if(isset($_GET['msg'])){
+            echo '<h3 class="errorMsg center">' . $_GET['msg'] . '</h3>';
+        }

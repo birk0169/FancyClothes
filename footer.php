@@ -35,6 +35,7 @@
             $("#slider").slider();
         });
     </script>
+    
 </body>
 
 </html>

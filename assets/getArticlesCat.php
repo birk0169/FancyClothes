@@ -39,6 +39,13 @@
                 </div>
                 <p><?php echo $row['content'] ?><a href="#">Læs mere...</a></p>
                 <!-- Muligheder for sletning her -->
+                <?php 
+                    if($_SESSION['accessLevel'] == 1){
+                        echo '<a class="deleteMe" href="assets/deleteArticle.php?productId=' . $row['productId'] . '"><i class="fa fa-trash" aria-hidden="true"></i></a>';
+                    } else if($_SESSION['accessLevel'] == 2 && $row['userName'] == $_SESSION['username']){
+                        echo '<a class="deleteMe" href="assets/deleteArticle.php?productId=' . $row['productId'] . '"><i class="fa fa-trash" aria-hidden="true"></i></a>';
+                    }
+                ?>
             </div>
         </article>
 

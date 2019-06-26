@@ -29,8 +29,10 @@
     //Check if login is valid
     if(empty($row = $statement->fetch())){
         //invalid login
-        echo '<p class="errorMsg">Incorrect username or/and password!</p>';
-        header('Refresh:5; url=index.php', true, 303);
+        //echo '<p class="errorMsg">Incorrect username or/and password!</p>';
+        //header('Refresh:5; url=index.php', true, 303);
+        $errorMsg = "Incorrect username or/and password!";
+        header('location:index.php?msg=' . $errorMsg);
     } else{
         //Start session
         if(password_verify($formPassword, $row['userPassword'])){
@@ -39,8 +41,9 @@
             $_SESSION['id'] = $row['userId'];
             header('location: index.php');
         }
-        echo '<p class="errorMsg">Incorrect username or/and password!</p>';
-        header('Refresh:5; url=index.php', true, 303);
+        //echo '<p class="errorMsg">Incorrect username or/and password!</p>';
+        //header('Refresh:5; url=index.php', true, 303);
+        header('location:index.php');
     }
 
 
