@@ -56,13 +56,9 @@
             <div>
                 <label for="category">Kategori</label>
                 <select name="category" id="category" required>
-                    <option value="jakker">Jakker</option>
-                    <option value="bukser">Bukser</option>
-                    <option value="skjorter">Skjorter</option>
-                    <option value="strik">Strik</option>
-                    <option value="tshirts">T-shirts og tanktops</option>
-                    <option value="tasker">Tasker</option>
-                    <option value="sko">Sko</option>
+                    <?php
+                        require "assets/getCategories.php";
+                    ?>
                 </select>
             </div>
             <div>
