@@ -1,6 +1,14 @@
 <?php
     //Start session
     session_start();
+
+    //Check if title and desc variable is set
+    if(!isset($title)){
+        $title = "none";
+    }
+    if(!isset($desc)){
+        $desc = "none";
+    }
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -8,8 +16,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Forside | FancyClothes.dk</title>
-    <meta name="description" content="Velkommen til FancyClothes.dk">
+    <title><?php echo $title ?> | FancyClothes.dk</title>
+    <meta name="description" content="<?php echo $desc ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -57,18 +65,21 @@
     <div class="container navbar">
         <nav>
             <ul>
-                <li class="active"><a href="index.php">Forside</a></li>
-                <li><a href="#">Produkter</a></li>
-                <li><a href="#">Nyheder</a></li>
-                <li><a href="#">Handelsbetingelser</a></li>
-                <li><a href="#">Om os</a></li>
+                <li class="<?php echo $title === "Forside" ? "active" : "" ?>"><a href="index.php">Forside</a></li>
+                <li class="<?php echo $title === "Produkter" ? "active" : "" ?>"><a href="#">Produkter</a></li>
+                <li class="<?php echo $title === "Nyheder" ? "active" : "" ?>"><a href="#">Nyheder</a></li>
+                <li class="<?php echo $title === "Handelsbetingelser" ? "active" : "" ?>"><a href="#">Handelsbetingelser</a></li>
+                <li class="<?php echo $title === "Om os" ? "active" : "" ?>"><a href="#">Om os</a></li>
                 <?php
                     if(isset($_SESSION['username']) && !empty($_SESSION['username'])){
                         echo "<li><a href='logout.php' class='Logout'>Log ud</a></li>";
                     }
                     else{
                         echo "<li><a href='#' class='loginBtn'>Log ind</a></li>";
-                        echo "<li><a href='register.php' class='loginBtn'>Opret bruger</a></li>";
+                        //echo "<li class=' " . $title === "Opret bruger" ? "active" : "" . " '><a href='register.php'>Opret bruger</a></li>";
+                        echo "<li class='";
+                        echo $title === "Opret bruger" ? "active" : "" ;
+                        echo "'><a href='register.php'>Opret bruger</a></li>";
                     }
                 
                 ?>

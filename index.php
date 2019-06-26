@@ -1,4 +1,8 @@
     <?php
+    //Set page variables
+    $title = "Forside";
+    $desc = "Velkommen til FancyClothes.dk";
+
     //Load header
         require "header.php";
     ?>
@@ -82,12 +86,13 @@
                 </div>
                 <div class="catMain">
                     <ul>
-                        <li><a href="assets/getArticlesCat.php?category=jakker">Jakker</a></li>
-                        <li><a href="#">Bukser</a></li>
-                        <li><a href="#">Skjorter</a></li>
-                        <li><a href="#">Strik</a></li>
-                        <li><a href="#">T-shirts & Tank tops</a></li>
-                        <li><a href="#">Tasker</a></li>
+                        <li><a href="?category=jakker">Jakker</a></li>
+                        <li><a href="?category=bukser">Bukser</a></li>
+                        <li><a href="?category=skjorter">Skjorter</a></li>
+                        <li><a href="?category=strik">Strik</a></li>
+                        <li><a href="?category=tshirts">T-shirts & Tank tops</a></li>
+                        <li><a href="?category=tasker">Tasker</a></li>
+                        <li><a href="?category=sko">Sko</a></li>
                     </ul>
                 </div>
             </div>
@@ -165,7 +170,15 @@
                         
                     </div>
                 </article> -->
-                <?php require "assets/getArticles.php"?>
+                <?php
+                    if(empty($_GET)){
+                        //Get all articles
+                        require "assets/getArticles.php";
+                    } else{
+                        //Get articles by category
+                        require "assets/getArticlesCat.php";
+                    }
+                ?>
             </div>
         </div>
     </main>

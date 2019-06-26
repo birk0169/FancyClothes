@@ -10,7 +10,7 @@
     $statement->bindParam(1, $category);
     $statement->execute();
 
-    print_r($row = $statement->fetch(PDO::FETCH_ASSOC));
+    //print_r($row = $statement->fetch(PDO::FETCH_ASSOC));
 
     //While there is rows remaining in $statement the loop continues
     while($row = $statement->fetch(PDO::FETCH_ASSOC)){

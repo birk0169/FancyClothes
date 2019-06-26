@@ -1,4 +1,8 @@
 <?php
+    //Set page variables
+    $title = "Opret bruger";
+    $desc = "Opret en bruger på FancyClothes.dk";
+
     require "header.php";
 ?>
 
